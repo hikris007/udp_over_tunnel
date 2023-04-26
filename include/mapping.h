@@ -6,14 +6,32 @@
 #include <functional>
 #include <string>
 
+/**
+ * Package struct
+ * OpCode|MappingID|Data(Optional)
+ *
+ * OpCode:
+ *      0x1 -> Establish Mapping
+ *      0x2 -> Data
+ *      0x3 -> Close Mapping
+ */
+
+typedef unsigned int MappingID;
+#define INVALID_MAPPING_ID 0;
+
 class Mapping {
 public:
+    enum OpCode {
+        OP_CODE_ESTABLISHED = 0x1,
+        OP_CODE_DATA = 0x2,
+        OP_CODE_CLOSE = 0x3
+    };
     enum State {
-        CLOSED = 0x00,
-        WAITING_TO_BE_ESTABLISHED = 0x1,
-        ESTABLISHED = 0x2,
-        CLOSE_WAIT = 0x3,
-        CLOSING = 0x4
+        STATE_CLOSED = 0x0,
+        STATE_WAITING_TO_BE_ESTABLISHED = 0x1,
+        STATE_ESTABLISHED = 0x2,
+        STATE_CLOSE_WAIT = 0x3,
+        STATE_CLOSING = 0x4
     };
 
     std::function<void()> onReady;
