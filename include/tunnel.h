@@ -3,6 +3,8 @@
 //
 
 #ifndef UDP_OVER_TUNNEL_TUNNEL_H
+#define UDP_OVER_TUNNEL_TUNNEL_H
+
 #include <functional>
 #include <memory>
 #include <string>
@@ -28,7 +30,7 @@ public:
     std::function<void(const std::string&)> onRead;
     std::function<void()> onClose;
 
-    virtual int write(const char*,int) = 0;
+    virtual int write(const char*,size_t) = 0;
     virtual void close() = 0;
     virtual enum State state() const = 0;
 
@@ -37,6 +39,5 @@ private:
 
 typedef std::shared_ptr<Tunnel> TunnelPtr;
 
-#define UDP_OVER_TUNNEL_TUNNEL_H
 
 #endif //UDP_OVER_TUNNEL_TUNNEL_H

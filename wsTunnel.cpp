@@ -4,7 +4,7 @@
 
 #include "include/wsTunnel.h"
 
-int WsTunnel::write(const char * data, int len) {
+int WsTunnel::write(const char * data, size_t len) {
     return this->webSocketChannel->write(data,len);
 }
 

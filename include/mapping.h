@@ -3,7 +3,10 @@
 //
 
 #ifndef UDP_OVER_TUNNEL_MAPPING_H
+#define UDP_OVER_TUNNEL_MAPPING_H
+
 #include <functional>
+#include <memory>
 #include <string>
 
 /**
@@ -16,7 +19,7 @@
  *      0x3 -> Close Mapping
  */
 
-typedef unsigned int MappingID;
+typedef uint32_t MappingID;
 #define INVALID_MAPPING_ID 0;
 
 class Mapping {
@@ -38,12 +41,12 @@ public:
     std::function<void(const std::string&)> onRead;
     std::function<void()> onClose;
 
-    int write(const char*,int);
+    int write(const char*,size_t);
     void close();
 protected:
 private:
 };
 
-#define UDP_OVER_TUNNEL_MAPPING_H
+typedef std::shared_ptr<Mapping> MappingPtr;
 
 #endif //UDP_OVER_TUNNEL_MAPPING_H

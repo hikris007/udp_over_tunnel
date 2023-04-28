@@ -27,7 +27,7 @@ TunnelPtr Transport::pickTunnel() {
     return *iterator++;
 }
 
-int Transport::write(const char * data, int len) {
+int Transport::write(const char * data, size_t len) {
     TunnelPtr tunnelPtr = this->pickTunnel();
     if(tunnelPtr == nullptr){
         hloge("transport error: tunnel is nullptr");

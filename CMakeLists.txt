@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(OpenSSL REQUIRED)
 find_package(libhv CONFIG REQUIRED)
 
-add_executable(udp_over_tunnel main.cpp include/tunnel.h include/transport.h test/test.h wsTunnel.cpp include/wsTunnel.h include/session.h transport.cpp include/mapping.h)
+add_executable(udp_over_tunnel main.cpp include/tunnel.h include/transport.h test/test.h wsTunnel.cpp include/wsTunnel.h include/session.h transport.cpp include/mapping.h server/serverSession.h server/serverSession.cpp client/clientSession.h client/clientSession.cpp)
 
 # Link
 target_link_libraries(udp_over_tunnel PRIVATE OpenSSL::SSL OpenSSL::Crypto)
