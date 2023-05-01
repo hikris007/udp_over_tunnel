@@ -15,9 +15,10 @@ class Transport {
 public:
     enum State {
         STATE_CLOSED = 0x0,
-        STATE_ESTABLISHED = 0x1,
-        STATE_CLOSE_WAIT = 0x2,
-        STATE_CLOSING = 0x3
+        STATE_ESTABLISHING = 0x1,
+        STATE_ESTABLISHED = 0x2,
+        STATE_CLOSE_WAIT = 0x3,
+        STATE_CLOSING = 0x4
     };
 
     std::function<void()> onReady;
